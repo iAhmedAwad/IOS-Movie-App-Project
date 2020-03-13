@@ -1,0 +1,6 @@
+framework module Pods_IOSMovieProj_IOSMovieProjUITests {
+  umbrella header "Pods-IOSMovieProj-IOSMovieProjUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
