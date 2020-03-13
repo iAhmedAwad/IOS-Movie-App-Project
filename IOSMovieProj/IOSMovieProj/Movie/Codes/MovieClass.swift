@@ -10,25 +10,25 @@ import Foundation
 
 class Movie{
     
-    var title : String!
-    var popularity : Double!
-    var overview : String!
-    var poster : String!
-    var id : Int!
-    var rating : Float!
-    var releaseYear : String!
+    var atitle : String!
+    var apopularity : Double!
+    var aoverview : String!
+    var aposter : String!
+    var aid : Int!
+    var arating : Float!
+    var areleaseYear : String!
     
     
     init(){}
     
     init(Title : String, Popularity : Double, Overview : String, Poster : String, Id : Int, ReleaseYear : String){
         
-        title = Title
-        popularity = Popularity
-        overview = Overview
-        poster = Poster
-        id = Id
-        releaseYear = ReleaseYear
+        atitle = Title
+        apopularity = Popularity
+        aoverview = Overview
+        aposter = Poster
+        aid = Id
+        areleaseYear = ReleaseYear
         
     }
         

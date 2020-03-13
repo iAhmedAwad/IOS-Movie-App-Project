@@ -33,12 +33,13 @@ class Network {
                 
                 for i in 0..<json["results"].count{
                     var mo = Movie()
-                    mo.poster = json["results"][i]["poster_path"].stringValue
-                    mo.title = json["results"][i]["title"].stringValue
-                    mo.id = json["results"][i]["id"].intValue
-                    mo.rating = json["results"][i]["vote_average"].floatValue
-                    mo.overview = json["results"][i]["overview"].stringValue
-                    mo.releaseYear = json["results"][i]["release_date"].stringValue
+                    mo.aposter = json["results"][i]["poster_path"].stringValue
+                    mo.atitle = json["results"][i]["title"].stringValue
+                    mo.areleaseYear = json["results"][i]["release_date"].stringValue
+                    mo.aid = json["results"][i]["id"].intValue
+                    mo.arating = json["results"][i]["vote_average"].floatValue
+                    mo.aoverview = json["results"][i]["overview"].stringValue
+                    
                     //append in Array
                     self.movielist.append(mo)
                    // print(mo.poster!)

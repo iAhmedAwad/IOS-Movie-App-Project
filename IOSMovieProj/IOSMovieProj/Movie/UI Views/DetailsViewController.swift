@@ -22,9 +22,9 @@ class DetailsViewController: UIViewController{
         super.viewDidLoad()
         
         
-        detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.poster), placeholderImage: UIImage(named: "placeholder.png"))
+        detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.aposter), placeholderImage: UIImage(named: "placeholder.png"))
         
-        detailedTitle.text = detailedMovie.title
+        detailedTitle.text = detailedMovie.atitle
         
         
     }

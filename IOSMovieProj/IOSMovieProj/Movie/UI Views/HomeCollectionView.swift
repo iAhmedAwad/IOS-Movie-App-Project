@@ -33,18 +33,18 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        print("MMMMMMM")
-
-        let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        
-        detailedView.detailedMovie = dataArray[indexPath.row]
-
-        self.navigationController?.pushViewController(detailedView, animated: true)
-        
-    }
+//
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//        print("MMMMMMM")
+//
+//        let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+//
+//        detailedView.detailedMovie = dataArray[indexPath.row]
+//
+//        self.navigationController?.pushViewController(detailedView, animated: true)
+//
+//    }
 
     /*
     
@@ -80,7 +80,7 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
     
         // Configure the cell
     
-        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].poster), placeholderImage: UIImage(named: "placeholder.png"))
+        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].aposter), placeholderImage: UIImage(named: "placeholder.png"))
         //print("https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].poster)
         //cell.title.text = dataArray[indexPath.row].title
         // cell.popularity.text = String(dataArray[indexPath.row].popularity)
@@ -90,19 +90,21 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
 
     
         
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+
+//print("MMM")
+        
+                let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        
+                detailedView.detailedMovie = dataArray[indexPath.row]
+        
+                self.navigationController?.pushViewController(detailedView, animated: true)
+        
+        
+    }
  
 
-    
-    //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //
-    //        print("MMMMMMM")
-    //
-    //        let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-    //
-    //        detailedView.detailedMovie = dataArray[indexPath.row]
-    //
-    //        self.navigationController?.pushViewController(detailedView, animated: true)
-    //    }
 }
   
 
