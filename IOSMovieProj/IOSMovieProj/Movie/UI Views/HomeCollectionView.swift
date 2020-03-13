@@ -12,14 +12,16 @@ import SDWebImage
 private let reuseIdentifier = "Cell"
 
 class HomeCollectionView: UICollectionViewController, DataGetter {
+    
+    var movie = Movie()
+    var dataArray = [Movie]()
 
     func getAllData(movieArray: [Movie]) {
         dataArray = movieArray
         self.collectionView.reloadData()
     }
     
-    var movie = Movie()
-    var dataArray = [Movie]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

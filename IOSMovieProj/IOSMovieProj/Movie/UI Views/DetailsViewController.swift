@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class DetailsViewController: UIViewController{
+class DetailsViewController: UIViewController, YoutubeKeyProtocol{
  
     
     @IBOutlet weak var detailedTitle: UILabel!
@@ -17,6 +17,18 @@ class DetailsViewController: UIViewController{
     @IBOutlet weak var detailedImg: UIImageView!
     @IBOutlet weak var detailedReleaseYear: UILabel!
     var detailedMovie = Movie()
+    
+    
+    
+//    var movie = Movie()
+//     var dataArray = [Movie]()
+//
+//     func getAllData(movieArray: [Movie]) {
+//         dataArray = movieArray
+//         self.collectionView.reloadData()
+//     }
+//
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

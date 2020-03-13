@@ -12,17 +12,32 @@ import SwiftyJSON
 
 class Network {
     var movielist = [Movie]()
-    let getDatavar : DataGetter
+    var singleMovieDetailsList = [SingleMovie]()
+    var getDatavar : DataGetter!
+    var getKeyVar : YoutubeKeyProtocol!
+   var movieUrl : String!
     
     init (getData : DataGetter){
         
         getDatavar = getData
+ 
     }
     
+    init (getKey : YoutubeKeyProtocol, urlStr : String){
+           
+           getKeyVar = getKey
+        //urlString = urlStr
+            var movieUrl : String = "http://api.themoviedb.org/3/movie/" + urlStr + "/videos?api_key=0f6963deb33263bc64efce4c7b4345a5"
+     
+       }
 
     
    // Alamofire.request("https://api.themoviedb.org/3/discover/movie?sort_by=popularity. desc&api_key=0f6963deb33263bc64efce4c7b4345a5").validate().responseJSON
     var url:String="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0f6963deb33263bc64efce4c7b4345a5"
+    
+
+    
+    
     
     func getDataFromAPI() {
         Alamofire.request(url,method:.get).responseJSON
@@ -53,4 +68,46 @@ class Network {
   
         
 }
+    
+    //
+    
+    
+     func getKeyFromAPI() {
+            Alamofire.request(movieUrl,method:.get).responseJSON
+                
+                { response in
+                    
+                    var json:JSON=JSON(response.result.value!)
+                    
+                    for i in 0..<json["results"].count{
+                        var mo = SingleMovie()
+                        mo.id = json["results"][i]["id"].stringValue
+                        mo.iso_639_1 = json["results"][i]["iso_639_1"].stringValue
+                        mo.iso_3166_1 = json["results"][i]["iso_3166_1"].stringValue
+                        mo.key = json["results"][i]["key"].stringValue
+                        mo.name = json["results"][i]["name"].stringValue
+                        mo.site = json["results"][i]["site"].stringValue
+                        mo.type = json["results"][i]["type"].stringValue
+                        mo.size = json["results"][i]["type"].intValue
+                        
+                        //append in Array
+                        self.singleMovieDetailsList.append(mo)
+                       // print(mo.poster!)
+                    }
+                    
+                   // self.getDatavar.getAllData(movieArray : self.movielist)
+                    self.getKeyVar.getKey(singleMovieList: self.singleMovieDetailsList)
+     
+            
+        
+        }
+      
+            
+    }
+    
+    
+    
+    //
+    
+    
 }
