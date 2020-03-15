@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import youtube_ios_player_helper
 
 class DetailsViewController: UIViewController, YoutubeKeyProtocol{
    
@@ -21,11 +22,22 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol{
        }
        
 
+    @IBOutlet weak var playerView: YTPlayerView!
     
+    @IBAction func trailerButton(_ sender: Any) {
+        
+        let Str = singleMovieArray[0].key
+        
+        playerView.load(withVideoId: Str!)
+        
+    }
+    @IBAction func favButton(_ sender: Any) {
+    }
     @IBOutlet weak var detailedTitle: UILabel!
     @IBOutlet weak var detailedOverview: UILabel!
     @IBOutlet weak var detailedImg: UIImageView!
     @IBOutlet weak var detailedReleaseYear: UILabel!
+    
     var detailedMovie = Movie()
     
 
@@ -37,6 +49,8 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol{
         detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.aposter!), placeholderImage: UIImage(named: "placeholder.png"))
         
         detailedTitle.text = detailedMovie.atitle
+        detailedOverview.text = detailedMovie.aoverview
+        detailedReleaseYear.text = detailedMovie.areleaseYear
         
        // var x : String
       //  x = (detailedMovie.aid.

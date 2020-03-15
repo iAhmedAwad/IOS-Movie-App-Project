@@ -15,8 +15,12 @@ target 'IOSMovieProj' do
   target 'IOSMovieProjUITests' do
     # Pods for testing
   end
+  
+project '/Volumes/In Between/GitHub/IOS-Movie-App-Project/IOSMovieProj/IOSMovieProj.xcodeproj'
 
 pod 'Alamofire', '~> 4.0'
 pod 'SwiftyJSON', '~> 4.0'
 pod 'SDWebImage', '~> 3.8'
+pod 'youtube-ios-player-helper', '~> 0.1.4'
+pod 'Cosmos', '~> 21.0'
 end
