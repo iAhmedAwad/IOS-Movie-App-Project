@@ -18,26 +18,19 @@ class Network {
    var movieUrl : String!
     
     init (getData : DataGetter){
-        
         getDatavar = getData
- 
     }
     
-    init (getKey : YoutubeKeyProtocol, urlStr : String){
+    init (getKey : YoutubeKeyProtocol, urlStr : Int){
            
            getKeyVar = getKey
-        //urlString = urlStr
-            var movieUrl : String = "http://api.themoviedb.org/3/movie/" + urlStr + "/videos?api_key=0f6963deb33263bc64efce4c7b4345a5"
+         movieUrl   = "https://api.themoviedb.org/3/movie/" + String(urlStr) + "/videos?api_key=0f6963deb33263bc64efce4c7b4345a5"
      
        }
-
     
-   // Alamofire.request("https://api.themoviedb.org/3/discover/movie?sort_by=popularity. desc&api_key=0f6963deb33263bc64efce4c7b4345a5").validate().responseJSON
+    
+
     var url:String="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0f6963deb33263bc64efce4c7b4345a5"
-    
-
-    
-    
     
     func getDataFromAPI() {
         Alamofire.request(url,method:.get).responseJSON
@@ -52,7 +45,7 @@ class Network {
                     mo.atitle = json["results"][i]["title"].stringValue
                     mo.areleaseYear = json["results"][i]["release_date"].stringValue
                     mo.aid = json["results"][i]["id"].intValue
-                    mo.arating = json["results"][i]["vote_average"].floatValue
+                    mo.arating = json["results"][i]["vote_average"].floatValue/2
                     mo.aoverview = json["results"][i]["overview"].stringValue
                     
                     //append in Array
@@ -61,7 +54,6 @@ class Network {
                 }
                 
                 self.getDatavar.getAllData(movieArray : self.movielist)
-                //self.displayRef.fetchData(movieArr: self.movielist)        }
         
     
     }
@@ -82,13 +74,13 @@ class Network {
                     for i in 0..<json["results"].count{
                         var mo = SingleMovie()
                         mo.id = json["results"][i]["id"].stringValue
-                        mo.iso_639_1 = json["results"][i]["iso_639_1"].stringValue
-                        mo.iso_3166_1 = json["results"][i]["iso_3166_1"].stringValue
+                       // mo.iso_639_1 = json["results"][i]["iso_639_1"].stringValue
+                        //mo.iso_3166_1 = json["results"][i]["iso_3166_1"].stringValue
                         mo.key = json["results"][i]["key"].stringValue
-                        mo.name = json["results"][i]["name"].stringValue
-                        mo.site = json["results"][i]["site"].stringValue
-                        mo.type = json["results"][i]["type"].stringValue
-                        mo.size = json["results"][i]["type"].intValue
+                        //mo.name = json["results"][i]["name"].stringValue
+                        //mo.site = json["results"][i]["site"].stringValue
+                        //mo.type = json["results"][i]["type"].stringValue
+                        //mo.size = json["results"][i]["type"].intValue
                         
                         //append in Array
                         self.singleMovieDetailsList.append(mo)

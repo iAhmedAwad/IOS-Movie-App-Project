@@ -11,8 +11,17 @@ import SDWebImage
 
 private let reuseIdentifier = "Cell"
 
-class HomeCollectionView: UICollectionViewController, DataGetter {
+class HomeCollectionView: UICollectionViewController, DataGetter, UICollectionViewDelegateFlowLayout {
     
+    //
+ /*
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+          let padding: CGFloat =  50
+          let collectionViewSize = collectionView.frame.size.width - padding
+
+        return CGSize(width: collectionViewSize/2, height: collectionViewSize/1.1)
+      }
+*/
     var movie = Movie()
     var dataArray = [Movie]()
 
@@ -20,14 +29,10 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
         dataArray = movieArray
         self.collectionView.reloadData()
     }
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-        //self.collectionView.delegate = self
-        
+   
         let network = Network(getData: self)
  
         network.getDataFromAPI()
@@ -48,7 +53,7 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
 //
 //    }
 
-    /*
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
@@ -67,7 +72,7 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
          return 0;
      }
-*/
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -82,7 +87,7 @@ class HomeCollectionView: UICollectionViewController, DataGetter {
     
         // Configure the cell
     
-        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].aposter), placeholderImage: UIImage(named: "placeholder.png"))
+        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].aposter!), placeholderImage: UIImage(named: "placeholder.png"))
         //print("https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].poster)
         //cell.title.text = dataArray[indexPath.row].title
         // cell.popularity.text = String(dataArray[indexPath.row].popularity)

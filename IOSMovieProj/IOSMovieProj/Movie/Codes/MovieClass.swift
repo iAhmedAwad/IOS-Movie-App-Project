@@ -10,13 +10,13 @@ import Foundation
 
 class Movie{
     
-    var atitle : String!
-    var apopularity : Double!
-    var aoverview : String!
-    var aposter : String!
-    var aid : Int!
-    var arating : Float!
-    var areleaseYear : String!
+    var atitle : String?
+    var apopularity : Double?
+    var aoverview : String?
+    var aposter : String?
+    var aid : Int?
+    var arating : Float?
+    var areleaseYear : String?
     
     
     init(){}

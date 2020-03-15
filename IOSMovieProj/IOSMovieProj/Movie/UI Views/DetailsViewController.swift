@@ -10,7 +10,17 @@ import UIKit
 import SDWebImage
 
 class DetailsViewController: UIViewController, YoutubeKeyProtocol{
- 
+   
+    
+    var singleMovie = SingleMovie()
+     var singleMovieArray = [SingleMovie]()
+    
+    func getKey(singleMovieList: [SingleMovie]) {
+           singleMovieArray = singleMovieList
+        self.view.layoutIfNeeded()
+       }
+       
+
     
     @IBOutlet weak var detailedTitle: UILabel!
     @IBOutlet weak var detailedOverview: UILabel!
@@ -18,27 +28,22 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol{
     @IBOutlet weak var detailedReleaseYear: UILabel!
     var detailedMovie = Movie()
     
-    
-    
-//    var movie = Movie()
-//     var dataArray = [Movie]()
-//
-//     func getAllData(movieArray: [Movie]) {
-//         dataArray = movieArray
-//         self.collectionView.reloadData()
-//     }
-//
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.aposter), placeholderImage: UIImage(named: "placeholder.png"))
+       
+        detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.aposter!), placeholderImage: UIImage(named: "placeholder.png"))
         
         detailedTitle.text = detailedMovie.atitle
         
-        
+       // var x : String
+      //  x = (detailedMovie.aid.
+        let network = Network(getKey: self, urlStr: detailedMovie.aid!)
+               
+        network.getKeyFromAPI()
+   
     }
     
 
