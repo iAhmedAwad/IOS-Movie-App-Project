@@ -13,15 +13,6 @@ private let reuseIdentifier = "Cell"
 
 class HomeCollectionView: UICollectionViewController, DataGetter, UICollectionViewDelegateFlowLayout {
     
-    //
- /*
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-          let padding: CGFloat =  50
-          let collectionViewSize = collectionView.frame.size.width - padding
-
-        return CGSize(width: collectionViewSize/2, height: collectionViewSize/1.1)
-      }
-*/
     var movie = Movie()
     var dataArray = [Movie]()
 
@@ -40,21 +31,7 @@ class HomeCollectionView: UICollectionViewController, DataGetter, UICollectionVi
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
     }
-//
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        print("MMMMMMM")
-//
-//        let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-//
-//        detailedView.detailedMovie = dataArray[indexPath.row]
-//
-//        self.navigationController?.pushViewController(detailedView, animated: true)
-//
-//    }
 
-
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
      let height = collectionView.frame.size.height
@@ -88,10 +65,7 @@ class HomeCollectionView: UICollectionViewController, DataGetter, UICollectionVi
         // Configure the cell
     
         cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].aposter!), placeholderImage: UIImage(named: "placeholder.png"))
-        //print("https://image.tmdb.org/t/p/w185" + dataArray[indexPath.row].poster)
-        //cell.title.text = dataArray[indexPath.row].title
-        // cell.popularity.text = String(dataArray[indexPath.row].popularity)
-        
+    
         return cell
     }
 
@@ -99,8 +73,6 @@ class HomeCollectionView: UICollectionViewController, DataGetter, UICollectionVi
         
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-
-//print("MMM")
         
                 let detailedView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         
