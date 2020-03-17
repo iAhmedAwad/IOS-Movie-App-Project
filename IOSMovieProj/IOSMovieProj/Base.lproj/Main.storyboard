@@ -139,13 +139,6 @@
                                 <rect key="frame" x="16" y="104" width="378" height="240"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2j-Cz-9Ka">
-                                <rect key="frame" x="238" y="802" width="30" height="30"/>
-                                <state key="normal" title="Fav"/>
-                                <connections>
-                                    <action selector="favButton:" destination="xkA-Hj-uFw" eventType="touchUpInside" id="8w4-L7-mox"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALm-ZX-T3w">
                                 <rect key="frame" x="212" y="360" width="186" height="30"/>
                                 <state key="normal" title="More Trailers"/>
@@ -175,18 +168,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFl-lO-ZT9">
+                                <rect key="frame" x="177" y="784" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reviews"/>
+                                <connections>
+                                    <action selector="revBtn:" destination="xkA-Hj-uFw" eventType="touchUpInside" id="eXR-Hz-Z9T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="eSx-uG-VDO" firstAttribute="leading" secondItem="opf-se-xX2" secondAttribute="leading" constant="16" id="1Y4-ed-2mZ"/>
                             <constraint firstItem="j0r-gQ-lpq" firstAttribute="top" secondItem="9gK-Ix-Biv" secondAttribute="bottom" constant="26" id="3eY-c6-14Q"/>
                             <constraint firstItem="di7-n3-jzX" firstAttribute="leading" secondItem="luV-eB-rtP" secondAttribute="leading" id="4Un-I8-IkA"/>
-                            <constraint firstItem="opf-se-xX2" firstAttribute="bottom" secondItem="I2j-Cz-9Ka" secondAttribute="bottom" constant="30" id="75J-wD-K7r"/>
                             <constraint firstItem="opf-se-xX2" firstAttribute="trailing" secondItem="ALm-ZX-T3w" secondAttribute="trailing" constant="16" id="ADq-8h-DWw"/>
                             <constraint firstItem="opf-se-xX2" firstAttribute="trailing" secondItem="9gK-Ix-Biv" secondAttribute="trailing" constant="16" id="EAp-zb-Ozj"/>
                             <constraint firstAttribute="bottom" secondItem="di7-n3-jzX" secondAttribute="bottom" constant="552" id="Fva-g9-JoI"/>
                             <constraint firstItem="j0r-gQ-lpq" firstAttribute="leading" secondItem="QOz-Ld-kIE" secondAttribute="trailing" constant="16" id="Llp-7r-VaU"/>
-                            <constraint firstItem="I2j-Cz-9Ka" firstAttribute="leading" secondItem="opf-se-xX2" secondAttribute="leading" constant="238" id="LzL-BD-3zX"/>
                             <constraint firstItem="luV-eB-rtP" firstAttribute="leading" secondItem="opf-se-xX2" secondAttribute="leading" constant="16" id="QA8-Fx-8Wf"/>
                             <constraint firstItem="ALm-ZX-T3w" firstAttribute="top" secondItem="di7-n3-jzX" secondAttribute="bottom" constant="16" id="Rgt-WN-LsJ"/>
                             <constraint firstItem="eSx-uG-VDO" firstAttribute="top" secondItem="di7-n3-jzX" secondAttribute="bottom" constant="16" id="WLa-xk-f5V"/>
@@ -278,37 +277,50 @@
         <!--Reviews Table View Controller-->
         <scene sceneID="vOh-Db-fJw">
             <objects>
-                <tableViewController id="fum-6b-brh" customClass="ReviewsTableViewController" customModule="IOSMovieProj" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ReviewsTableViewController" id="fum-6b-brh" customClass="ReviewsTableViewController" customModule="IOSMovieProj" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z28-dX-Nzm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="245" id="9om-7t-qsV" customClass="ReviewsTableViewCell" customModule="IOSMovieProj" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="245"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="367" id="9om-7t-qsV" customClass="ReviewsTableViewCell" customModule="IOSMovieProj" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="367"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9om-7t-qsV" id="1gD-am-yWg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="245"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="367"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Men-65-5R2">
-                                            <rect key="frame" x="45" y="11" width="57" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Men-65-5R2">
+                                            <rect key="frame" x="36" y="11" width="342" height="25"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPF-eL-K8K">
-                                            <rect key="frame" x="20" y="40" width="374" height="194"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owg-hC-wea">
+                                            <rect key="frame" x="20" y="44" width="374" height="304"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="304" id="bpi-nA-q2a"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="owg-hC-wea" firstAttribute="top" secondItem="Men-65-5R2" secondAttribute="bottom" constant="8" id="Iaj-Kb-kPj"/>
+                                        <constraint firstItem="owg-hC-wea" firstAttribute="centerX" secondItem="Men-65-5R2" secondAttribute="centerX" id="J7x-PO-mxw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Men-65-5R2" secondAttribute="trailing" constant="16" id="J8g-Rc-eoV"/>
+                                        <constraint firstItem="Men-65-5R2" firstAttribute="leading" secondItem="1gD-am-yWg" secondAttribute="leadingMargin" constant="16" id="Snj-ek-gVf"/>
+                                        <constraint firstItem="Men-65-5R2" firstAttribute="top" secondItem="1gD-am-yWg" secondAttribute="topMargin" id="Znw-zb-Y5X"/>
+                                        <constraint firstItem="owg-hC-wea" firstAttribute="trailing" secondItem="1gD-am-yWg" secondAttribute="trailingMargin" id="aMB-S3-gql"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="owg-hC-wea" secondAttribute="bottom" constant="8" id="aRU-iC-R8s"/>
+                                        <constraint firstItem="owg-hC-wea" firstAttribute="leading" secondItem="1gD-am-yWg" secondAttribute="leadingMargin" id="kiV-aW-PPK"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="authorLabel" destination="Men-65-5R2" id="b5u-VV-YXi"/>
+                                    <outlet property="content" destination="owg-hC-wea" id="uYU-uQ-awz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -11,7 +11,7 @@ import Foundation
 class Movie{
     
     var atitle : String?
-    var apopularity : Double?
+   // var apopularity : Double?
     var aoverview : String?
     var aposter : String?
     var aid : Int?
@@ -21,10 +21,10 @@ class Movie{
     
     init(){}
     
-    init(Title : String, Popularity : Double, Overview : String, Poster : String, Id : Int, ReleaseYear : String){
+    init(Title : String,  Overview : String, Poster : String, Id : Int, ReleaseYear : String){
         
         atitle = Title
-        apopularity = Popularity
+       // apopularity = Popularity
         aoverview = Overview
         aposter = Poster
         aid = Id

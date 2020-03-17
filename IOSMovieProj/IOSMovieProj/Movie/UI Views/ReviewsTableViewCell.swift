@@ -10,6 +10,10 @@ import UIKit
 
 class ReviewsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var authorLabel: UILabel!
+  
+    @IBOutlet weak var content: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

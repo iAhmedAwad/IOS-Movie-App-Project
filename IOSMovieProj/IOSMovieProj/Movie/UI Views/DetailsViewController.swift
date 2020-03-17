@@ -10,11 +10,12 @@ import UIKit
 import SDWebImage
 import youtube_ios_player_helper
 import Cosmos
-class DetailsViewController: UIViewController, YoutubeKeyProtocol{
+class DetailsViewController: UIViewController, YoutubeKeyProtocol, ReviewsProtocol{
    
     
     var singleMovie = SingleMovie()
-     var singleMovieArray = [SingleMovie]()
+    var singleMovieArray = [SingleMovie]()
+    var reviewsArray = [Review]()
     
     func getKey(singleMovieList: [SingleMovie]) {
            singleMovieArray = singleMovieList
@@ -24,26 +25,17 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol{
         playerView.load(withVideoId: Str!)
         self.view.layoutIfNeeded()
        }
+    
+    func getReviews(reviewsList : [Review]){
+        
+        
+          reviewsArray = reviewsList
+        self.view.layoutIfNeeded()
+    }
        
 
     @IBOutlet weak var playerView: YTPlayerView!
     
-    @IBAction func trailerButton(_ sender: Any) {
-        
-      //  let Str = singleMovieArray[0].key
-        
-       // playerView.load(withVideoId: Str!)
-        
-        //DetailsViewController
-        
-       let trailersView = self.storyboard?.instantiateViewController(withIdentifier: "TrailersTableViewController") as! TrailersTableViewController
-        
-        trailersView.movieTrailersArray = singleMovieArray
-        
-          self.navigationController?.pushViewController(trailersView, animated: true)
-    }
-    @IBAction func favButton(_ sender: Any) {
-    }
     @IBOutlet weak var detailedTitle: UILabel!
     @IBOutlet weak var detailedOverview: UILabel!
     @IBOutlet weak var detailedImg: UIImageView!
@@ -63,14 +55,41 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol{
         detailedOverview.text = detailedMovie.aoverview
         detailedReleaseYear.text = detailedMovie.areleaseYear
         cosmosView.rating = Double(detailedMovie.arating!)
-
-        let network = Network(getKey: self, urlStr: detailedMovie.aid!)
-               
-        network.getKeyFromAPI()
         
-   
+        
+        let networkReview = Network(getReviews: self, urlReviewStr: detailedMovie.aid!)
+        
+        networkReview.getReviewsFromAPI()
+        
+        let networkTrailer = Network(getKey: self, urlStr: detailedMovie.aid!)
+               
+        networkTrailer.getKeyFromAPI()
+
     }
     
 
+      @IBAction func trailerButton(_ sender: Any) {
+          
+        //  let Str = singleMovieArray[0].key
+          
+         // playerView.load(withVideoId: Str!)
+          
+          //DetailsViewController
+          
+         let trailersView = self.storyboard?.instantiateViewController(withIdentifier: "TrailersTableViewController") as! TrailersTableViewController
+          
+          trailersView.movieTrailersArray = singleMovieArray
+          
+            self.navigationController?.pushViewController(trailersView, animated: true)
+      }
+    @IBAction func revBtn(_ sender: Any) {
+        
+        let reviewsView = self.storyboard?.instantiateViewController(withIdentifier: "ReviewsTableViewController") as! ReviewsTableViewController
+                 
+                   reviewsView.reviewsArray = self.reviewsArray
+                 
+                   self.navigationController?.pushViewController(reviewsView, animated: true)
+    }
 
+    
 }
