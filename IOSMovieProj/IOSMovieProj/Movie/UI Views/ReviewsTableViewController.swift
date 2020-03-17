@@ -11,6 +11,7 @@ import UIKit
 class ReviewsTableViewController: UITableViewController {
     
     var reviewsArray = [Review]()
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()

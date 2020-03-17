@@ -12,11 +12,12 @@ import youtube_ios_player_helper
 import Cosmos
 class DetailsViewController: UIViewController, YoutubeKeyProtocol, ReviewsProtocol{
    
-    
+    var isFav : Bool?
+    var coreData : OfflineData?
     var singleMovie = SingleMovie()
     var singleMovieArray = [SingleMovie]()
     var reviewsArray = [Review]()
-    
+    @IBOutlet weak var favBtn: UIButton!
     func getKey(singleMovieList: [SingleMovie]) {
            singleMovieArray = singleMovieList
         
@@ -36,17 +37,19 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol, ReviewsProtoc
 
     @IBOutlet weak var playerView: YTPlayerView!
     
+  
     @IBOutlet weak var detailedTitle: UILabel!
     @IBOutlet weak var detailedOverview: UILabel!
     @IBOutlet weak var detailedImg: UIImageView!
     @IBOutlet weak var detailedReleaseYear: UILabel!
     @IBOutlet weak var cosmosView: CosmosView!
+
     
     var detailedMovie = Movie()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         detailedOverview.numberOfLines = 0
         detailedOverview.sizeToFit()
         detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.aposter!), placeholderImage: UIImage(named: "placeholder.png"))
@@ -55,7 +58,7 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol, ReviewsProtoc
         detailedOverview.text = detailedMovie.aoverview
         detailedReleaseYear.text = detailedMovie.areleaseYear
         cosmosView.rating = Double(detailedMovie.arating!)
-        
+        */
         
         let networkReview = Network(getReviews: self, urlReviewStr: detailedMovie.aid!)
         
@@ -66,6 +69,35 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol, ReviewsProtoc
         networkTrailer.getKeyFromAPI()
 
     }
+    
+    //
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+            detailedOverview.numberOfLines = 0
+            detailedOverview.sizeToFit()
+            detailedImg.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + detailedMovie.aposter!), placeholderImage: UIImage(named: "placeholder.png"))
+        
+            detailedTitle.text = detailedMovie.atitle
+            detailedOverview.text = detailedMovie.aoverview
+            detailedReleaseYear.text = detailedMovie.areleaseYear
+            cosmosView.rating = Double(detailedMovie.arating!)
+        
+        coreData = OfflineData(appdeleget: UIApplication.shared.delegate as! AppDelegate)
+        isFav = coreData!.doExistFavs(id: detailedMovie.aid!)
+        
+        if(isFav == true)
+        {
+            favBtn.setImage(UIImage(named: "filledStar"), for: .normal)
+        }
+        else
+        {
+            favBtn.setImage(UIImage(named: "emptyStar"), for: .normal)
+        }
+        
+    }
+    
+    //
     
 
       @IBAction func trailerButton(_ sender: Any) {
@@ -92,4 +124,38 @@ class DetailsViewController: UIViewController, YoutubeKeyProtocol, ReviewsProtoc
     }
 
     
+    /*
+     
+     
+     if(isFav == false)
+               {
+                var movie = detailedMovie
+                coreData!.AddMovieToFavorites(movie: movie)
+                   favBtn.setImage(UIImage(named: "filledStar"), for: .normal)
+               }
+     
+     */
+    
+
+
+    @IBAction func favBtClicked(_ sender: Any) {
+        
+        
+
+        
+        if(isFav == false)
+                  {
+                   var movie = detailedMovie
+                   coreData!.AddMovieToFavorites(movie: movie)
+                      favBtn.setImage(UIImage(named: "filledStar"), for: .normal)
+                  }
+        else{
+            
+            coreData!.deleteMoviesFromFav(id: detailedMovie.aid!)
+            favBtn.setImage(UIImage(named: "emptyStar"), for: .normal)
+        }
+        
+    }
+    
+
 }

@@ -21,7 +21,7 @@ class Movie{
     
     init(){}
     
-    init(Title : String,  Overview : String, Poster : String, Id : Int, ReleaseYear : String){
+    init(Title : String,  Overview : String, Poster : String, Id : Int, ReleaseYear : String, Rating : Float){
         
         atitle = Title
        // apopularity = Popularity
@@ -29,7 +29,9 @@ class Movie{
         aposter = Poster
         aid = Id
         areleaseYear = ReleaseYear
+        arating = Rating
         
     }
         
 }
+
